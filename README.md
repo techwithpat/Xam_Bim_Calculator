@@ -1,2 +1,2 @@
 # Xam_Bim_Calculator
-Body mass index calculator using Xamarin forms
+A body mass index calculator using Xamarin forms.
