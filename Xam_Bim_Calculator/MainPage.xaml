@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             mc:Ignorable="d" x:Class="Xam_Bim_Calculator.MainPage">
+    <ContentPage.Resources>
+        <Color x:Key="PrussianBlue">#003459</Color>
+        <Color x:Key="CarolinaBlue">#00A8E8</Color>
+        <Color x:Key="RichBlack">#00171F</Color>
+
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="HorizontalOptions"
+                    Value="Center"/>
+            <Setter Property="TextColor"
+                    Value="{StaticResource RichBlack}"
+                    />
+            <Setter Property="FontFamily"
+                    Value="Comfortaa"/>
+        </Style>
+
+        <Style x:Key="TitleStyle"
+               TargetType="Label"
+               BasedOn="{StaticResource LabelStyle}">
+           <Setter Property="FontSize"
+                   Value="Header"/>
+        </Style>
+
+        <Style x:Key="ValueStyle"
+               TargetType="Label"
+               BasedOn="{StaticResource LabelStyle}">
+            <Setter Property="FontSize"
+                    Value="Title"/>
+            <Setter Property="TextColor"
+                    Value="{StaticResource CarolinaBlue}"/>
+        </Style>
+        <Style TargetType="Slider">
+            <Setter Property="ThumbColor"
+                    Value="{StaticResource PrussianBlue}"
+                    />
+            <Setter Property="MinimumTrackColor"
+                    Value="{StaticResource PrussianBlue}"
+                    />
+            <Setter Property="MaximumTrackColor"
+                    Value="{StaticResource CarolinaBlue}"
+                    />
+        </Style>
+    </ContentPage.Resources>
+    <FlexLayout Direction="Column"
+                JustifyContent="SpaceEvenly"
+                Padding="40">
+        <StackLayout>
+            <Label Text="How tall are you ?"
+                   Style="{StaticResource TitleStyle}"/>
+            <Label Text="{Binding Source={x:Reference HeightSlider},
+                    Path=Value,
+                    StringFormat='{0:F0} cm'}"
+                   Style="{StaticResource ValueStyle}"/>
+            <Slider x:Name="HeightSlider"
+                    Maximum="220"
+                    Minimum="40"
+                    Value="{Binding Height}"/>
+        </StackLayout>       
+       <StackLayout>
+            <Label Text="How much do weigh ?"
+                   Style="{StaticResource TitleStyle}"/>
+            <Label Text="{Binding Source={x:Reference WeightSlider},
+                    Path=Value,
+                    StringFormat='{0:F0} kg'}"
+                   Style="{StaticResource ValueStyle}"/>
+            <Slider x:Name="WeightSlider"
+                    Maximum="300"
+                    Minimum="40"
+                    Value="{Binding Weight}"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Your Bmi is"
+                   Style="{StaticResource LabelStyle}"
+                   />
+            <Label Text="{Binding Bmi}"
+                   Style="{StaticResource LabelStyle}"
+                   FontSize="48"
+                   />
+            <Label Text="{Binding Classification}"
+                   Style="{StaticResource LabelStyle}"
+                   />
+        </StackLayout>
+    </FlexLayout>
+</ContentPage>
